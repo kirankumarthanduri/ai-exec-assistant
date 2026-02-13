@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # Debug print (temporary)
-print("DEBUG config.py -> OPENAI_API_KEY exists:", OPENAI_API_KEY is not None)
+print("DEBUG config.py -> GEMINI_API_KEY  exists:", GEMINI_API_KEY  is not None)

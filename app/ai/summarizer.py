@@ -1,10 +1,9 @@
-from openai import OpenAI
-from config import OPENAI_API_KEY
+from google import genai
+from config import GEMINI_API_KEY
 
-# Create OpenAI client
-client = OpenAI(api_key=OPENAI_API_KEY)
+# Create Gemini client
+client = genai.Client(api_key=GEMINI_API_KEY)
 
-# System prompt (MUST be defined)
 SYSTEM_PROMPT = """
 You are an executive assistant.
 
@@ -19,13 +18,12 @@ Be brief, professional, and structured.
 """
 
 def summarize(text: str) -> str:
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": text}
-        ],
-        temperature=0.3
+    response = client.models.generate_content(
+        model="gemini-1.5-pro",   # This now works
+        contents=f"{SYSTEM_PROMPT}\n\nUser Input:\n{text}",
+        config={
+            "temperature": 0.3
+        }
     )
 
-    return response.choices[0].message.content.strip()
+    return response.text.strip()
