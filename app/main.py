@@ -1,8 +1,8 @@
-from app.ai.summarizer import summarize
-from app.calendar.outlook_calendar import get_today_meetings as outlook_meetings
-from app.calendar.google_calendar import get_today_meetings as google_meetings
-from app.email.outlook import get_unread_emails as outlook_emails
-from app.email.gmail import get_unread_emails as gmail_emails
+from ai.summarizer import summarize
+from calendar_utils.outlook_calendar import get_today_meetings as outlook_meetings
+from calendar_utils.google_calendar import get_today_meetings as google_meetings
+from email_utils.outlook import get_unread_emails as outlook_emails
+from email_utils.gmail import get_unread_emails as gmail_emails
 
 def run_agent():
     print("🚀 Running AI Executive Assistant...")
